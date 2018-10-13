@@ -1,0 +1,112 @@
+【定位position】
+position定位 ->CSS中一个非常常用的样式属性
+    ->position: absolute 绝对定位，相对于其父级参照物来设置偏移或者定位的位置(一般情况下元素的参照物都是BODY)
+      top/left/bottom/right 可以调整当前元素和参照物之间的距离
+      top/left：当前元素的左上角距离参照物的左上角
+      bottom/right：当前元素的右下角距离参照物的右下角
+
+   在默认的情况下，我们所有元素不管它的父级是谁，但是定位的参照物都是body，我们可以调整定位参照物:
+    outer和inner两个元素，inner是outer的儿子，如果想让inner相对于outer定位，我们可以给outer设置:
+      position: relative;
+      position: absolute;
+     设置任何一个都可以
+
+    ->position: relative 相对定位，相对于自己之前的位置定位
+
+    ->position: fixed 固定定位，固定到当前页面的某一个位置，不管页面怎么滚动，始终在这个位置
+
+
+    面试官面试必问的一道样式题：让当前元素在页面(或者是自己所在容器的正居中位置(水平和垂直都是居中的))，怎么做?
+    .outer{
+       width:300px;
+       height:200px;
+
+       position:absolute;
+       top:50%;
+       left:50%; //->保证盒子左上角在居中位置,接下来向左和向上各移动盒子宽高的一半即可
+       margin:-100px 0 0 -150px;
+    }
+
+    或者
+
+    .outer{
+       width:300px;
+       height:200px;
+       position:absolute;
+       top:0;
+       left:0;
+       right:0;
+       bottom:0;
+       margin:auto;
+    }
+【transition过渡动画】
+transition-property 过渡动画的属性名称 all代表所有
+transition-duration 过渡动画持续时间
+transition-timing-function 过渡动画的运动曲线 ease 匀速
+transition-delay 过渡动画的延迟时间
+例如： transition:all 1s ease
+
+【视口viewport】
+<!--meta:vp-->
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+
+【rem响应式布局】
+REM：相对单位，相对于HTML的字体大小设置的单位
+ html{
+    font-size:100px; //->一般设置为100为了方便计算，浏览器最小字体12，所以不设置为10  =>1REM等于100PX  =>相当于给当前的浏览器设定了一个REM和PX之间转换的比例
+
+    //->之前写样式都是以PX为单位的，现在不用了，可以在原有的值基础上除以100，把单位换成REM =>换成REM后，以后只要HTML的字体大小一变，我们之前以REM为单位的值也都会自动跟着改变
+
+    //->REM响应式布局：
+    //1、首先严格按照UI设计师给的设计稿去搭建结构和书写样式(100%还原设计稿)
+      设计师给的手机端设计稿常用的尺寸:
+        640*960  ->iphone4的尺寸放大一倍来的
+        640*1136 ->iphone5的尺寸放大一倍来的
+        750*1334 ->iphone6的尺寸放大一倍来的
+        设计稿一般都是 xxx.psd 格式的文件(photoShop软件设计的)
+
+    //2、把所有的PX单位都除以100，变为REM单位
+
+    //3、JS：获取当前手机(HTML)的宽度，除以设计稿的宽度，动态计算出缩放的比例，然后根据比例重新计算REM和PX是的换算比例(修改HTML的字体大小) ->只要字体大小一改变，那么之前以REM为单位的值都会跟着自动改变
+ }
+
+【动态计算rem的计算公式】
+<!--REM-->
+<script>
+    ~function () {
+        var winW = document.documentElement.clientWidth;
+        if (winW > 640) return;
+        document.documentElement.style.fontSize = (winW / 640) * 100 + 'px';
+    }();
+</script>
+
+【animate动画库】
+【swiper插件】
+
+【魔方js导入】
+<!--import js-->
+<script src="js/zhufengpeixun.min.js"></script>
+<script>
+    zhufengpeixun.config({
+        cube: 'sjziei-cube',
+        swipe: 'sjziei-swiper',
+        mak: 'sjziei-3d',
+        music: 'sjziei-music'
+    });
+</script>
+
+【CSS3属性一般写两套】
+-webkit-transform-style:preserve-3d;
+transform-style:preserve-3d
+
+【CSS3中实现3D动画的步骤】
+1、给舞台设置视距 perspective:2000px
+2、给需要实现3D动画的元素设置3D变形效果
+   -webkit-transform-style:preserve-3d;
+    transform-style:preserve-3d
+3、开始进行3D变形
+
+【swiper插件】
+
+
+

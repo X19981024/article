@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定位position</title>
+    <style>
+    .big{position:relative;width: 500px;height:500px;background: black}
+    .small{position:absolute;top:50%;left:50%;width:200px;height:200px;background: red;margin-top:-100px;margin-left:-100px;}
+    </style>
+</head>
+<body>
+<!--需求：红色的色块在一个黑色色块中始终水平垂直居中
+position:absolute; 参照物先找父元素，看父元素上有没有position这个属性，如果有，参照物 就是这个父元素；如果没有，参照物会往一直查找，找到body为止，就会参照body定位
+
+position:relative; 相对定位，一般用来作为绝对定位的参照物
+-->
+<div class="big">
+    <div class="small"></div>
+</div>
+
+</body>
+</html>
